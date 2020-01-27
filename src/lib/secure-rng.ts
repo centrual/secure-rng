@@ -23,7 +23,7 @@ class SecureRNGClass {
   }
 
   public GenerateInteger(min?: number, max?: number): number {
-    const minMax = SecureRNGClass.GetMinMax(min, max);
+    const minMax = SecureRNGClass.GetMinMax(0, 100, min, max);
 
     if (minMax.min === minMax.max) {
       return minMax.min;
@@ -63,7 +63,7 @@ class SecureRNGClass {
       throw new DecimalPlacesCanNotBeBelowOneError();
     }
 
-    const minMax = SecureRNGClass.GetMinMax(min, max);
+    const minMax = SecureRNGClass.GetMinMax(0, 1, min, max);
 
     if (minMax.min === minMax.max) {
       return String(minMax.min);
@@ -72,9 +72,9 @@ class SecureRNGClass {
     return BigNumber.random(decimalPlaces + 1).times(minMax.max - minMax.min).plus(minMax.min).toFixed(decimalPlaces, BigNumber.ROUND_HALF_CEIL);
   }
 
-  private static GetMinMax(min?: number, max?: number): MinMax {
-    let TempLow = 0;
-    let TempHigh = 1;
+  private static GetMinMax(defaultMinValue = 0, defaultMaxValue = 1, min?: number, max?: number): MinMax {
+    let TempLow = defaultMinValue;
+    let TempHigh = defaultMaxValue;
 
     if (typeof min !== 'undefined') {
       if (typeof max !== 'undefined') {
