@@ -22,7 +22,7 @@ class SecureRNGClass {
     });
   }
 
-  public GenerateInteger(min = 0, max = 100): number {
+  public GenerateInteger(min?: number, max?: number): number {
     const minMax = SecureRNGClass.GetMinMax(min, max);
 
     if (minMax.min === minMax.max) {
@@ -58,7 +58,7 @@ class SecureRNGClass {
     return GeneratedString;
   }
 
-  public GenerateDecimal(decimalPlaces= 10, min = 0, max = 1): string {
+  public GenerateDecimal(decimalPlaces= 10, min?: number, max?: number): string {
     if( decimalPlaces < 1 ) {
       throw new DecimalPlacesCanNotBeBelowOneError();
     }
@@ -72,9 +72,22 @@ class SecureRNGClass {
     return BigNumber.random(decimalPlaces + 1).times(minMax.max - minMax.min).plus(minMax.min).toFixed(decimalPlaces, BigNumber.ROUND_HALF_CEIL);
   }
 
-  private static GetMinMax(min: number, max: number): MinMax {
-    const Low = Math.min(min, max);
-    const High = Math.max(min, max);
+  private static GetMinMax(min?: number, max?: number): MinMax {
+    let TempLow = 0;
+    let TempHigh = 1;
+
+    if (typeof min !== 'undefined') {
+      if (typeof max !== 'undefined') {
+        TempLow = min;
+        TempHigh = max;
+      } else {
+        TempLow = 0;
+        TempHigh = min;
+      }
+    }
+
+    const Low = Math.min(TempLow, TempHigh);
+    const High = Math.max(TempLow, TempHigh);
 
     return {
       min: Low,
