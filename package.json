@@ -1,7 +1,7 @@
 {
   "name": "secure-rng",
   "version": "1.0.0",
-  "main": "dist/commonjs/index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "build": "del-cli dist && tsc",
