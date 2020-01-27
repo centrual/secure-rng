@@ -1,6 +1,6 @@
 {
   "name": "secure-rng",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "main": "index.js",
   "license": "MIT",
   "description": "Generating secure random numbers.",
@@ -22,7 +22,7 @@
   "scripts": {
     "build": "del-cli dist && tsc",
     "test": "jest",
-    "pub": "cpy package.json dist && cpy README.md dist && cpy .npmignore dist && cpy LICENSE dist && cd dist && npm publish"
+    "prepub": "cpy package.json dist && cpy README.md dist && cpy .npmignore dist && cpy LICENSE dist"
   },
   "devDependencies": {
     "@types/jest": "^24.9.1",

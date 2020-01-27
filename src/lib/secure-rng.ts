@@ -96,4 +96,4 @@ class SecureRNGClass {
   }
 }
 
-export const SecureRng = new SecureRNGClass();
+export const SecureRNG = new SecureRNGClass();

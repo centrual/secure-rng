@@ -19,12 +19,12 @@ yarn add secure-rng
 > Typescript:
 
 ```
-import {SecureRNG} from 'secure-rng';
+import SecureRNG from 'secure-rng';
 ```
 
 > Node.JS:
 ```
-const SecureRNG = require('secure-rng').SecureRNG;
+const SecureRNG = require('secure-rng');
 ```
 
 ```

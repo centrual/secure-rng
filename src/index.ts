@@ -1,2 +1,2 @@
-import {SecureRng} from "./lib/secure-rng";
-export {SecureRng};
+import {SecureRNG} from "./lib/secure-rng";
+export default SecureRNG;
