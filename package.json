@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "license": "MIT",
+  "description": "Generating secure random numbers.",
+  "repository": "https://github.com/centrual/secure-rng.git",
+  "keywords": ["random", "rng", "secure", "generator", "crypto", "bignumber", "decimal"],
+  "author": {
+    "name": "Oğuz Özcan",
+    "email": "hello@oguzozcan.com",
+    "url": "https://oguzozcan.com/"
+  },
   "scripts": {
     "build": "del-cli dist && tsc",
     "test": "jest"
