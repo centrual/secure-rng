@@ -1,4 +1,4 @@
-import {SecureRng} from "..";
+import SecureRNG from "..";
 import {LengthParameterCanNotBeBelowOneError} from "../lib/errors/length-parameter-can-not-be-below-one-error";
 import {CharacterSetLengthCanNotBeBelowOneError} from "../lib/errors/character-set-length-can-not-be-below-one-error";
 import {DecimalPlacesCanNotBeBelowOneError} from "../lib/errors/decimal-places-can-not-be-below-one-error";
@@ -9,12 +9,12 @@ describe('RngGenerator', function () {
   describe('Number Generation', () => {
 
     it('Should generate number', () => {
-      const result = SecureRng.GenerateInteger();
+      const result = SecureRNG.GenerateInteger();
       expect(typeof result).toBe('number');
     });
 
     it('Should return min parameter when min and max parameter is same.', () => {
-      const result = SecureRng.GenerateInteger(2, 2);
+      const result = SecureRNG.GenerateInteger(2, 2);
       expect(result).toBe(2);
     });
 
@@ -24,7 +24,7 @@ describe('RngGenerator', function () {
       let thereIsOther = false;
 
       for (let x = 0; x < 100; x++) {
-        const result = SecureRng.GenerateInteger(1);
+        const result = SecureRNG.GenerateInteger(1);
 
         if (result === 0) {
           thereIsZero = true;
@@ -45,12 +45,12 @@ describe('RngGenerator', function () {
     });
 
     it('Should generate number greater than or equal to 0 if there is no parameters.', () => {
-      const result = SecureRng.GenerateInteger();
+      const result = SecureRNG.GenerateInteger();
       expect(result).toBeGreaterThanOrEqual(0);
     });
 
     it('Should generate number less than or equal to 100 if there is no parameters.', () => {
-      const result = SecureRng.GenerateInteger();
+      const result = SecureRNG.GenerateInteger();
       expect(result).toBeLessThanOrEqual(100);
     });
 
@@ -60,7 +60,7 @@ describe('RngGenerator', function () {
       let thereIsOther = false;
 
       for (let x = 0; x < 100; x++) {
-        const result = SecureRng.GenerateInteger(0, 1);
+        const result = SecureRNG.GenerateInteger(0, 1);
 
         if (result === 0) {
           thereIsZero = true;
@@ -86,7 +86,7 @@ describe('RngGenerator', function () {
       let thereIsOther = false;
 
       for (let x = 0; x < 100; x++) {
-        const result = SecureRng.GenerateInteger(1, 2);
+        const result = SecureRNG.GenerateInteger(1, 2);
 
         if (result === 1) {
           thereIsOne = true;
@@ -114,7 +114,7 @@ describe('RngGenerator', function () {
       let errorThrown = false;
 
       try {
-        SecureRng.GenerateString(-1);
+        SecureRNG.GenerateString(-1);
       } catch (e) {
         errorThrown = true;
       }
@@ -126,7 +126,7 @@ describe('RngGenerator', function () {
       let isRightErrorReturned = false;
 
       try {
-        SecureRng.GenerateString(0);
+        SecureRNG.GenerateString(0);
       } catch (e) {
         if (e instanceof LengthParameterCanNotBeBelowOneError) {
           isRightErrorReturned = true;
@@ -140,7 +140,7 @@ describe('RngGenerator', function () {
       let errorThrown = false;
 
       try {
-        SecureRng.GenerateString(10, '');
+        SecureRNG.GenerateString(10, '');
       } catch (e) {
         errorThrown = true;
       }
@@ -152,7 +152,7 @@ describe('RngGenerator', function () {
       let isRightErrorReturned = false;
 
       try {
-        SecureRng.GenerateString(10, '');
+        SecureRNG.GenerateString(10, '');
       } catch (e) {
         if( e instanceof CharacterSetLengthCanNotBeBelowOneError ) {
           isRightErrorReturned = true;
@@ -163,17 +163,17 @@ describe('RngGenerator', function () {
     });
 
     it('Should generate 10 character string if length parameter is empty', () => {
-      const GeneratedString = SecureRng.GenerateString();
+      const GeneratedString = SecureRNG.GenerateString();
       expect(GeneratedString.length).toBe(10);
     });
 
     it('Should generate 20 character string if length parameter is 20', () => {
-      const GeneratedString = SecureRng.GenerateString(20);
+      const GeneratedString = SecureRNG.GenerateString(20);
       expect(GeneratedString.length).toBe(20);
     });
 
     it('Should generate 10 character string filled with 0', () => {
-      const GeneratedString = SecureRng.GenerateString(10, '0');
+      const GeneratedString = SecureRNG.GenerateString(10, '0');
       expect(GeneratedString).toBe('0000000000');
     });
 
@@ -185,7 +185,7 @@ describe('RngGenerator', function () {
       let errorThrown = false;
 
       try {
-        SecureRng.GenerateDecimal(-1);
+        SecureRNG.GenerateDecimal(-1);
       } catch (e) {
         errorThrown = true;
       }
@@ -197,7 +197,7 @@ describe('RngGenerator', function () {
       let isRightErrorReturned = false;
 
       try {
-        SecureRng.GenerateDecimal(0);
+        SecureRNG.GenerateDecimal(0);
       } catch (e) {
         if (e instanceof DecimalPlacesCanNotBeBelowOneError) {
           isRightErrorReturned = true;
@@ -208,17 +208,17 @@ describe('RngGenerator', function () {
     });
 
     it('Should generate decimal between 0 and 1 with 10 decimal places if there is no parameters', () => {
-        const result = SecureRng.GenerateDecimal();
+        const result = SecureRNG.GenerateDecimal();
         expect(result.length).toBe(12);
     });
 
     it('Should generate decimal between 0 and 1 with 30 decimal places if decimal places parameter is 30', () => {
-      const result = SecureRng.GenerateDecimal(30);
+      const result = SecureRNG.GenerateDecimal(30);
       expect(result.length).toBe(32);
     });
 
     it('Should generate decimal between 10 and 99 with 30 decimal places if decimal places parameter is 30, min parameter is 10 and max parameter is 99', () => {
-      const result = SecureRng.GenerateDecimal(30, 10, 99);
+      const result = SecureRNG.GenerateDecimal(30, 10, 99);
       expect(result.length).toBe(33);
     });
 
@@ -232,7 +232,7 @@ describe('RngGenerator', function () {
       let numbersBetween66and100 = 0;
 
       for( let x = 0; x < 100000; x++ ) {
-        const result = SecureRng.GenerateDecimal(30, 0, 100);
+        const result = SecureRNG.GenerateDecimal(30, 0, 100);
         const resultBN = new BigNumber(result);
         const isAbove0 = resultBN.isGreaterThanOrEqualTo(0);
         const isBelow33 = resultBN.isLessThanOrEqualTo(33.333);

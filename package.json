@@ -22,7 +22,7 @@
   "scripts": {
     "build": "del-cli dist && tsc",
     "test": "jest",
-    "prepub": "cpy package.json dist && cpy README.md dist && cpy .npmignore dist && cpy LICENSE dist"
+    "prepub": "cpy package.json dist && cpy README.md dist && cpy .npmignore dist && cpy LICENSE dist && jest"
   },
   "devDependencies": {
     "@types/jest": "^24.9.1",
