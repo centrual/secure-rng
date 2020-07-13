@@ -3,6 +3,7 @@ import {CharacterSetLengthCanNotBeBelowOneError} from "./errors/character-set-le
 import {LengthParameterCanNotBeBelowOneError} from "./errors/length-parameter-can-not-be-below-one-error";
 import {DecimalPlacesCanNotBeBelowOneError} from "./errors/decimal-places-can-not-be-below-one-error";
 
+
 interface MinMax {
   min: number;
   max: number;
@@ -12,6 +13,13 @@ class SecureRNGClass {
   private static DEFAULT_CHARACTERS = '0123456789qwertyuopasdfghjklizxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
 
   constructor() {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    if (typeof global !== 'undefined' && typeof global.crypto === 'undefined') {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (global as any).crypto = require('crypto');
+    }
+
     BigNumber.config({
       CRYPTO: true
     });
