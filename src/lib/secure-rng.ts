@@ -12,11 +12,6 @@ class SecureRNGClass {
   private static DEFAULT_CHARACTERS = '0123456789qwertyuopasdfghjklizxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
 
   constructor() {
-    if (typeof global !== 'undefined') {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (global as any).crypto = require('crypto');
-    }
-
     BigNumber.config({
       CRYPTO: true
     });
