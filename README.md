@@ -22,9 +22,15 @@ yarn add secure-rng
 import SecureRNG from 'secure-rng';
 ```
 
+> ES 6 Module:
+
+```
+import * as SecureRNG from 'secure-rng';
+```
+
 > Node.JS:
 ```
-const SecureRNG = require('secure-rng');
+const SecureRNG = require('secure-rng').default;
 ```
 
 ```
